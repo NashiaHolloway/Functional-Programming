@@ -1,4 +1,8 @@
 /**
+  * Nashia Holloway
+  * Cosc455 Project 2
+  */
+/**
   * 1. PRIME NUMBERS
   *  Create a function, named prime, that takes an integer and returns a
   *  Boolean indicating whether the integer parameter is a prime number.
@@ -29,7 +33,7 @@ def twinPrimes(i : Int, j : Int): Boolean = {
     case _ => false
   }
   */
-   //MADE MORE FUNCTIONAL ^, but doubled the twinPrimesList for some reason...
+   //MADE MORE FUNCTIONAL ^, but doubled the twinPrimesList for some reason...z
   if(prime(i) && prime(j)){
     if((i - j == 2) || (j - i == 2)){
       true
