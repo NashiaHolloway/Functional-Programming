@@ -94,7 +94,10 @@ def convertBooleanListToIntList(booleanList: List[Boolean]) = {
 }
 
 def compliment(subList : List[Int]) : List[Int] = {
-
+  subList.head match {
+    case 0 => subList.updated(subList.head, 1)
+    case 1 => compliment(subList.tail)
+  }
 }
 
 /** This is the "main" function to do binary addition. This function should:
@@ -110,8 +113,7 @@ def binaryAddition(pList: List[Int], qList: List[Int]) = {
 }
 
 def binarySubtraction(pList: List[Int], qList: List[Int]) = {
-  compliment(pList)
-  compliment(qList)
+  convertBooleanListToIntList(doBinaryAddition(convertIntListToBooleanList(compliment(pList)).reverse, convertIntListToBooleanList(compliment(qList)).reverse, false).reverse)
 }
 
 // Testing binary addition.
@@ -121,5 +123,5 @@ if (binaryAddition(pTest3, qTest3).equals(test3ExectedSolution)) println("Test 3
 if (binaryAddition(pTest4, qTest4).equals(test4ExectedSolution)) println("Test 4 passes!") else println("Test 4 fails.")
 
 // Testing binary subtraction.
-//if (binarySubtraction(pTest2, qTest2).equals(test5ExectedSolution)) println("Test 5 passes!") else println("Test 5 fails.")
-//if (binarySubtraction(pTest4, qTest4).equals(test6ExectedSolution)) println("Test 6 passes!") else println("Test 6 fails.")
+if (binarySubtraction(pTest2, qTest2).equals(test5ExectedSolution)) println("Test 5 passes!") else println("Test 5 fails.")
+if (binarySubtraction(pTest4, qTest4).equals(test6ExectedSolution)) println("Test 6 passes!") else println("Test 6 fails.")
