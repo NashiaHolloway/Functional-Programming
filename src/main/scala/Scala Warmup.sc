@@ -1,6 +1,6 @@
 /**
   * Nashia Holloway
-  * Cosc455 Project 2
+  * Cosc455 Project2
   */
 /**
   * 1. PRIME NUMBERS
