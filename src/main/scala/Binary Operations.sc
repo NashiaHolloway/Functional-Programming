@@ -24,6 +24,7 @@ val test4ExectedSolution: List[Int] = List(1, 0, 1, 1, 1, 0, 1)
 val test5ExectedSolution: List[Int] = List(1, 1, 1, 0, 1, 1)
 val test6ExectedSolution: List[Int] = List(1, 1, 0, 0, 0, 1)
 
+
 /**
   * This function does the binary addition when there are uneven lists and still must
   * finish the add with the carry bits.
@@ -93,11 +94,9 @@ def convertBooleanListToIntList(booleanList: List[Boolean]) = {
   }
 }
 
+
 def compliment(subList : List[Int]) : List[Int] = {
-  subList.head match {
-    case 0 => subList.updated(subList.head, 1)
-    case 1 => compliment(subList.tail)
-  }
+  //Try again, fool :(
 }
 
 /** This is the "main" function to do binary addition. This function should:
@@ -112,8 +111,14 @@ def binaryAddition(pList: List[Int], qList: List[Int]) = {
   convertBooleanListToIntList(doBinaryAddition(convertIntListToBooleanList(pList).reverse, convertIntListToBooleanList(qList).reverse, false).reverse)
 }
 
+/**
+  * Main function to do binary subtraction.
+  * @param pList
+  * @param qList
+  * @return
+  */
 def binarySubtraction(pList: List[Int], qList: List[Int]) = {
-  convertBooleanListToIntList(doBinaryAddition(convertIntListToBooleanList(compliment(pList)).reverse, convertIntListToBooleanList(compliment(qList)).reverse, false).reverse)
+  //Try again, fool :(
 }
 
 // Testing binary addition.
