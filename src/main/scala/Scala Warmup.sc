@@ -1,6 +1,6 @@
 /**
   * Nashia Holloway
-  * Cosc455 Project2
+  * Cosc455 Project 2
   */
 /**
   * 1. PRIME NUMBERS
@@ -19,7 +19,7 @@ prime(45) //false
 
 /**
   * 2. Twin Primes
-  * . Create a function, named twinprimes, that takes 2 integer parameters and
+  * Create a function, named twinprimes, that takes 2 integer parameters and
   * returns a Boolean  indicating whether the parameters are twin primes.
   * A twin prime is a prime number that differs from another prime number by two,
   * for example the twin prime pair (41, 43).
@@ -27,13 +27,12 @@ prime(45) //false
   * would return false.
   */
 def twinPrimes(i : Int, j : Int): Boolean = {
-  /*
-  prime(i) && prime(j) match {
-    case _ if i - j == 2 || j - i == 2 => true
+  Math.abs(i - j) match {
+    case 2 => if (prime(i) && prime(j)) true else false
     case _ => false
   }
-  */
-   //MADE MORE FUNCTIONAL ^, but doubled the twinPrimesList for some reason...z
+  /*
+  //MADE MORE FUNCTIONAL ^
   if(prime(i) && prime(j)){
     if((i - j == 2) || (j - i == 2)){
       true
@@ -42,6 +41,7 @@ def twinPrimes(i : Int, j : Int): Boolean = {
       false
   }
   else false
+  */
 }
 twinPrimes(5, 7) //true
 twinPrimes(7, 5) //true
@@ -60,10 +60,10 @@ def twinPrimesList(num : Int): List[Int] = {
     case a if a < 3 => Nil
     case _ =>
       if(twinPrimes(num - 2, num) || twinPrimes(num + 2, num)){
-        num :: twinPrimesList(num - 1)//added .reverse to order from smallest to largest
+        num :: twinPrimesList(num - 1).reverse //added .reverse to order from smallest to largest
       }
       else {
-        twinPrimesList(num - 1) //added .reverse to order from smallest to largest
+        twinPrimesList(num - 1).reverse //added .reverse to order from smallest to largest
       }
   }
 }

@@ -1,29 +1,28 @@
 // COSC 455 - Programming Languages: Implementation and Design
 // Project 2
 
-// NAME: <Nashia Holloway>
+// NAME: Nashia Holloway
 
 
 // Test Cases
 val pTest1: List[Int] = List (1, 1, 1, 1, 0)
 val qTest1: List[Int] = List(1, 0, 1, 1)
-val test1ExectedSolution: List[Int] = List(1, 0, 1, 0, 0, 1)
+val test1ExpectedSolution: List[Int] = List(1, 0, 1, 0, 0, 1)
 
 val pTest2: List[Int] = List (1, 0, 0, 1, 1, 0, 1)
 val qTest2: List[Int] = List(1, 0, 0, 1, 0)
-val test2ExectedSolution: List[Int] = List(1, 0, 1, 1, 1, 1, 1)
+val test2ExpectedSolution: List[Int] = List(1, 0, 1, 1, 1, 1, 1)
 
 val pTest3: List[Int] = List (1, 0, 0, 1, 0, 0, 1)
 val qTest3: List[Int] = List(1, 1, 0, 0, 1)
-val test3ExectedSolution: List[Int] = List(1, 1, 0, 0, 0, 1, 0)
+val test3ExpectedSolution: List[Int] = List(1, 1, 0, 0, 0, 1, 0)
 
 val pTest4: List[Int] = List (1, 0, 0, 0, 1, 1, 1)
 val qTest4: List[Int] = List(1, 0, 1, 1, 0)
-val test4ExectedSolution: List[Int] = List(1, 0, 1, 1, 1, 0, 1)
+val test4ExpectedSolution: List[Int] = List(1, 0, 1, 1, 1, 0, 1)
 
-val test5ExectedSolution: List[Int] = List(1, 1, 1, 0, 1, 1)
-val test6ExectedSolution: List[Int] = List(1, 1, 0, 0, 0, 1)
-
+val test5ExpectedSolution: List[Int] = List(1, 1, 1, 0, 1, 1)
+val test6ExpectedSolution: List[Int] = List(1, 1, 0, 0, 0, 1)
 
 /**
   * This function does the binary addition when there are uneven lists and still must
@@ -78,7 +77,11 @@ def doBinaryAddition(pBits: List[Boolean], qBits: List[Boolean], carryBit: Boole
   }
 }
 
-// This function converts a binary integer list into its corresponding boolean list.
+/**
+  * This function converts a binary integer list into its corresponding boolean list.
+  * @param intList
+  * @return
+  */
 def convertIntListToBooleanList(intList: List[Int]) = {
   intList.map {
     case 0 => false
@@ -86,7 +89,11 @@ def convertIntListToBooleanList(intList: List[Int]) = {
   }
 }
 
-// This function converts a boolean list into its corresponding binary integer list.
+/**
+  * This function converts a boolean list into its corresponding binary integer list.
+  * @param booleanList
+  * @return
+  */
 def convertBooleanListToIntList(booleanList: List[Boolean]) = {
   booleanList.map {
     case false => 0
@@ -94,9 +101,15 @@ def convertBooleanListToIntList(booleanList: List[Boolean]) = {
   }
 }
 
-
+/**
+  * This function does the two's compliment for binary subtraction.
+  * Map the list to switch bits.
+  * @param subList
+  * @return
+  */
 def compliment(subList : List[Int]) : List[Int] = {
-  //Try again, fool :(
+  binaryAddition(convertBooleanListToIntList(convertIntListToBooleanList(subList).map
+  (bit => !bit)), List(1))
 }
 
 /** This is the "main" function to do binary addition. This function should:
@@ -112,21 +125,24 @@ def binaryAddition(pList: List[Int], qList: List[Int]) = {
 }
 
 /**
-  * Main function to do binary subtraction.
+  * Main function to do binary subtraction. This function should:
+  * 1. Do the binary addition of pList and the two's compliment of qList
+  * 2. Drop the absolute value of the difference of the length of the lists.
+  * 3. Append the sign bit 1 to the beginning of the list for two's compliment.
   * @param pList
   * @param qList
   * @return
   */
 def binarySubtraction(pList: List[Int], qList: List[Int]) = {
-  //Try again, fool :(
+  1 :: binaryAddition(pList, compliment(qList)).drop(Math.abs(pList.length - qList.length))
 }
 
 // Testing binary addition.
-if (binaryAddition(pTest1, qTest1).equals(test1ExectedSolution)) println("Test 1 passes!") else println("Test 1 fails.")
-if (binaryAddition(pTest2, qTest2).equals(test2ExectedSolution)) println("Test 2 passes!") else println("Test 2 fails.")
-if (binaryAddition(pTest3, qTest3).equals(test3ExectedSolution)) println("Test 3 passes!") else println("Test 3 fails.")
-if (binaryAddition(pTest4, qTest4).equals(test4ExectedSolution)) println("Test 4 passes!") else println("Test 4 fails.")
+if (binaryAddition(pTest1, qTest1).equals(test1ExpectedSolution)) println("Test 1 passes!") else println("Test 1 fails.")
+if (binaryAddition(pTest2, qTest2).equals(test2ExpectedSolution)) println("Test 2 passes!") else println("Test 2 fails.")
+if (binaryAddition(pTest3, qTest3).equals(test3ExpectedSolution)) println("Test 3 passes!") else println("Test 3 fails.")
+if (binaryAddition(pTest4, qTest4).equals(test4ExpectedSolution)) println("Test 4 passes!") else println("Test 4 fails.")
 
 // Testing binary subtraction.
-if (binarySubtraction(pTest2, qTest2).equals(test5ExectedSolution)) println("Test 5 passes!") else println("Test 5 fails.")
-if (binarySubtraction(pTest4, qTest4).equals(test6ExectedSolution)) println("Test 6 passes!") else println("Test 6 fails.")
+if (binarySubtraction(pTest2, qTest2).equals(test5ExpectedSolution)) println("Test 5 passes!") else println("Test 5 fails.")
+if (binarySubtraction(pTest4, qTest4).equals(test6ExpectedSolution)) println("Test 6 passes!") else println("Test 6 fails.")
